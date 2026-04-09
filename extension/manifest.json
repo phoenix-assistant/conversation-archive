@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Conversation Archive",
+  "version": "0.1.0",
+  "description": "Capture AI conversations to your local archive",
+  "permissions": ["activeTab", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Save to Conversation Archive"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+}

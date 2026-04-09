@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "conversation-archive"
+version = "0.1.0"
+description = "Privacy-first personal knowledge base that aggregates AI conversations with semantic search"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [{ name = "Phoenix Assistant" }]
+keywords = ["ai", "conversations", "semantic-search", "chatgpt", "claude", "knowledge-base"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "click>=8.0",
+    "rich>=13.0",
+    "sentence-transformers>=2.2.0",
+    "numpy>=1.24",
+    "fastapi>=0.100",
+    "uvicorn>=0.20",
+    "pydantic>=2.0",
+]
+
+[project.optional-dependencies]
+postgres = ["asyncpg>=0.28", "sqlalchemy>=2.0"]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.21", "httpx>=0.24"]
+
+[project.scripts]
+convarch = "convarch.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/phoenix-assistant/conversation-archive"
+Repository = "https://github.com/phoenix-assistant/conversation-archive"
+
+[tool.setuptools.packages.find]
+include = ["convarch*"]
